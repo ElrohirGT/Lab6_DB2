@@ -14,7 +14,7 @@
       pkgs = import nixpkgs {inherit system;};
     in
       pkgs.mkShell {
-        packages = [pkgs.python3];
+        packages = [pkgs.python3 pkgs.mongosh];
       };
   };
 }

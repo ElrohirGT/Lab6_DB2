@@ -28,12 +28,15 @@ def printRandomUser(i):
         TAG_LIST, weights=[1 for x in TAG_LIST], k=random.randint(2, 5)
     )
     random.shuffle(FRIEND_LIST)
-    buys = [{"producto": x, "fecha": "Date()"} for x in range(50)]
+    buys = [
+        {"producto": random.choice(PRODUCT_NAME_LIST), "fecha": "Date()"}
+        for x in range(random.randint(10, 50))
+    ]
 
     print("{")
     print(f'nombre: "{name}",')
     print(f'email: "{email}",')
-    print(f"fecha_registro: $currentDate,")
+    print(f"fecha_registro: Date(),")
     print(f"puntos: {points},")
     print(f"active: true,")
     print(f'notas: "",')
@@ -47,7 +50,7 @@ def printRandomUser(i):
 
 
 print("db.usuarios.insertMany([")
-max = 100_000
+max = 1_000
 for i in range(max):
     printRandomUser(i)
     if i < max:
