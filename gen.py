@@ -29,7 +29,7 @@ def printRandomUser(i):
     )
     random.shuffle(FRIEND_LIST)
     buys = [
-        {"producto": random.choice(PRODUCT_NAME_LIST), "fecha": "Date()"}
+        '{"producto": ' + random.choice(PRODUCT_NAME_LIST) + ', "fecha": Date()}'
         for x in range(random.randint(10, 50))
     ]
 
@@ -45,7 +45,17 @@ def printRandomUser(i):
     print(f"tags: {tags},")
     print(f"dirección: [],")
     print(f"preferencias: [],")
-    print(f"historial_compras: {buys}")
+    print(f"historial_compras: [")
+
+    maxBuys = random.randint(10, 50)
+    for i in range(maxBuys):
+        print("{")
+        print(f'"producto": "{random.choice(PRODUCT_NAME_LIST)}",')
+        print(f'"fecha": Date(),')
+        print("}")
+        if i + 1 < maxBuys:
+            print(",")
+    print("]")
     print("}", end="")
 
 
@@ -53,6 +63,6 @@ print("db.usuarios.insertMany([")
 max = 1_000
 for i in range(max):
     printRandomUser(i)
-    if i < max:
+    if i + 1 < max:
         print(",")
 print("])")
