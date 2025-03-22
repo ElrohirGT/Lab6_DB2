@@ -22,8 +22,8 @@ def printRandomUser(i):
 
     name = random.choice(NAME_LIST)
     email = random.choice(EMAIL_LIST)
-    points = random.randint(1, 10)
-    visits = random.randint(5, 20)
+    points = random.randint(100, 2000)
+    visits = random.randint(5, 500)
     tags = random.choices(
         TAG_LIST, weights=[1 for x in TAG_LIST], k=random.randint(2, 5)
     )

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 # import subprocess
 #
 # for i in range(100):
@@ -13,6 +15,8 @@
 #         ]
 #     )
 
-for _ in {1..100}; do
-	python ./gen.py >./output.js && mongosh mongodb+srv://admin:galand0nis@freecluster.0iqxl.mongodb.net/Lab6 --eval 'load("output.js")'
+for i in {1..100}; do
+	echo "Iteration " "$i"
+	python ./gen.py >./output.js
+	mongosh mongodb+srv://admin:galand0nis@freecluster.0iqxl.mongodb.net/Lab6 --eval 'load("output.js")'
 done
